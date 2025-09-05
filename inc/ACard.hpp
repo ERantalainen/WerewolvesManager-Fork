@@ -43,6 +43,8 @@ typedef enum e_roles
 	CULTLEADER_ROLE,
 	HOODLUM_ROLE,
 	TANNER_ROLE,
+	VIGILANTE_ROLE,
+	CUSTOM_ROLE,
 	MAX_ROLES
 } t_roles;
 
@@ -70,7 +72,8 @@ class ACard
 			int _value;
 			bool _isDrunk = false;
 			bool _inCult = false;
-	
+
+
 	public:
 			virtual ~ACard();
 
@@ -80,6 +83,7 @@ class ACard
 			virtual void Protect(int index) { (void)index; return ; }
 			virtual int SorcSee(int index) { (void)index; return -1; }
 			virtual void Steal(int index) { (void)index; return ; }
+			virtual void shoot(int index) { std::cout << "TESTING THIS HERE\n"; (void)index; return ; }
 			virtual void Convert(int index) { (void)index; return ; }
 			virtual void Mischief(int index1, int index2) { (void)index1; (void)index2; return ; }
 			virtual void setVictim(int victim) { (void)victim ; }
@@ -100,6 +104,9 @@ class ACard
 			virtual void setCopiedPlayer(int index) { (void)index; }
 			virtual void performAction(int index) { (void)index; return ; }
 			virtual int getSide() const { return _side; }
+			virtual	bool	getGuilt() { return false; }
+			virtual void	setGuilt(bool guilt) { (void)guilt; }
+			virtual int		getBullets() { return 0; }
 
 			int getIndex() const;
 			bool getLife() const;

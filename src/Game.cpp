@@ -1,6 +1,6 @@
 #include "../inc/Game.hpp"
 
-static std::map<str, t_roles> roleLookup = 
+static std::map<str, t_roles> roleLookup =
 {
 	{"werewolf", WEREWOLF_ROLE},
 	{"wolf cub", WOLFCUB_ROLE},
@@ -37,7 +37,8 @@ static std::map<str, t_roles> roleLookup =
 	{"doppelganger", DOPPELGANGER_ROLE},
 	{"cult leader", CULTLEADER_ROLE},
 	{"hoodlum", HOODLUM_ROLE},
-	{"tanner", TANNER_ROLE}
+	{"tanner", TANNER_ROLE},
+	{"vigilante", VIGILANTE_ROLE}
 };
 
 void error_max()
@@ -215,7 +216,7 @@ void Game::addPlayer(str role)
 	}
 	str lowerRole = role;
 	std::transform(lowerRole.begin(), lowerRole.end(), lowerRole.begin(), ::tolower);
-	auto it = roleLookup.find(lowerRole);	
+	auto it = roleLookup.find(lowerRole);
 	if (it != roleLookup.end())
 	{
 		t_roles roleType = it->second;
@@ -223,7 +224,7 @@ void Game::addPlayer(str role)
 		switch (roleType)
 		{
 			case WEREWOLF_ROLE:
-				if (_howManyRoles[WEREWOLF_ROLE] == 12)	
+				if (_howManyRoles[WEREWOLF_ROLE] == 12)
 					return(error_max());
 				_whichRoles[WEREWOLF_ROLE] = true;
 				_howManyRoles[WEREWOLF_ROLE]++;
@@ -231,7 +232,7 @@ void Game::addPlayer(str role)
 				_balance -= 6;
 				break;
 			case WOLFCUB_ROLE:
-				if (_howManyRoles[WOLFCUB_ROLE] == 1)	
+				if (_howManyRoles[WOLFCUB_ROLE] == 1)
 					return(error_max());
 				_whichRoles[WOLFCUB_ROLE] = true;
 				_howManyRoles[WOLFCUB_ROLE]++;
@@ -239,7 +240,7 @@ void Game::addPlayer(str role)
 				_balance -= 8;
 				break;
 			case LONEWOLF_ROLE:
-				if (_howManyRoles[LONEWOLF_ROLE] == 1)	
+				if (_howManyRoles[LONEWOLF_ROLE] == 1)
 					return(error_max());
 				_whichRoles[LONEWOLF_ROLE] = true;
 				_howManyRoles[LONEWOLF_ROLE]++;
@@ -247,7 +248,7 @@ void Game::addPlayer(str role)
 				_balance -= 5;
 				break;
 			case VAMPIRE_ROLE:
-				if (_howManyRoles[VAMPIRE_ROLE] == 6)	
+				if (_howManyRoles[VAMPIRE_ROLE] == 6)
 					return(error_max());
 				_whichRoles[VAMPIRE_ROLE] = true;
 				_howManyRoles[VAMPIRE_ROLE]++;
@@ -255,7 +256,7 @@ void Game::addPlayer(str role)
 				_balance -= 8;
 				break;
 			case APPRENTICESEER_ROLE:
-				if (_howManyRoles[APPRENTICESEER_ROLE] == 1)	
+				if (_howManyRoles[APPRENTICESEER_ROLE] == 1)
 					return(error_max());
 				_whichRoles[APPRENTICESEER_ROLE] = true;
 				_howManyRoles[APPRENTICESEER_ROLE]++;
@@ -263,7 +264,7 @@ void Game::addPlayer(str role)
 				_balance += 4;
 				break;
 			case AURASEER_ROLE:
-				if (_howManyRoles[AURASEER_ROLE] == 1)	
+				if (_howManyRoles[AURASEER_ROLE] == 1)
 					return(error_max());
 				_whichRoles[AURASEER_ROLE] = true;
 				_howManyRoles[AURASEER_ROLE]++;
@@ -271,7 +272,7 @@ void Game::addPlayer(str role)
 				_balance += 3;
 				break;
 			case BODYGUARD_ROLE:
-				if (_howManyRoles[BODYGUARD_ROLE] == 1)	
+				if (_howManyRoles[BODYGUARD_ROLE] == 1)
 					return(error_max());
 				_whichRoles[BODYGUARD_ROLE] = true;
 				_howManyRoles[BODYGUARD_ROLE]++;
@@ -279,7 +280,7 @@ void Game::addPlayer(str role)
 				_balance += 3;
 				break;
 			case CUPID_ROLE:
-				if (_howManyRoles[CUPID_ROLE] == 1)	
+				if (_howManyRoles[CUPID_ROLE] == 1)
 					return(error_max());
 				_whichRoles[CUPID_ROLE] = true;
 				_howManyRoles[CUPID_ROLE]++;
@@ -287,7 +288,7 @@ void Game::addPlayer(str role)
 				_balance -= 3;
 				break;
 			case DISEASED_ROLE:
-				if (_howManyRoles[DISEASED_ROLE] == 1)	
+				if (_howManyRoles[DISEASED_ROLE] == 1)
 					return(error_max());
 				_whichRoles[DISEASED_ROLE] = true;
 				_howManyRoles[DISEASED_ROLE]++;
@@ -295,7 +296,7 @@ void Game::addPlayer(str role)
 				_balance += 3;
 				break;
 			case GHOST_ROLE:
-				if (_howManyRoles[GHOST_ROLE] == 1)	
+				if (_howManyRoles[GHOST_ROLE] == 1)
 					return(error_max());
 				_whichRoles[GHOST_ROLE] = true;
 				_howManyRoles[GHOST_ROLE]++;
@@ -303,7 +304,7 @@ void Game::addPlayer(str role)
 				_balance += 2;
 				break;
 			case HUNTER_ROLE:
-				if (_howManyRoles[HUNTER_ROLE] == 1)	
+				if (_howManyRoles[HUNTER_ROLE] == 1)
 					return(error_max());
 				_whichRoles[HUNTER_ROLE] = true;
 				_howManyRoles[HUNTER_ROLE]++;
@@ -311,7 +312,7 @@ void Game::addPlayer(str role)
 				_balance += 3;
 				break;
 			case IDIOT_ROLE:
-				if (_howManyRoles[IDIOT_ROLE] == 1)	
+				if (_howManyRoles[IDIOT_ROLE] == 1)
 					return(error_max());
 				_whichRoles[IDIOT_ROLE] = true;
 				_howManyRoles[IDIOT_ROLE]++;
@@ -319,7 +320,7 @@ void Game::addPlayer(str role)
 				_balance += 2;
 				break;
 			case LYCAN_ROLE:
-				if (_howManyRoles[LYCAN_ROLE] == 1)	
+				if (_howManyRoles[LYCAN_ROLE] == 1)
 					return(error_max());
 				_whichRoles[LYCAN_ROLE] = true;
 				_howManyRoles[LYCAN_ROLE]++;
@@ -327,7 +328,7 @@ void Game::addPlayer(str role)
 				_balance -= 1;
 				break;
 			case MAGICIAN_ROLE:
-				if (_howManyRoles[MAGICIAN_ROLE] == 1)	
+				if (_howManyRoles[MAGICIAN_ROLE] == 1)
 					return(error_max());
 				_whichRoles[MAGICIAN_ROLE] = true;
 				_howManyRoles[MAGICIAN_ROLE]++;
@@ -335,7 +336,7 @@ void Game::addPlayer(str role)
 				_balance += 4;
 				break;
 			case MARTYR_ROLE:
-				if (_howManyRoles[MARTYR_ROLE] == 1)	
+				if (_howManyRoles[MARTYR_ROLE] == 1)
 					return(error_max());
 				_whichRoles[MARTYR_ROLE] = true;
 				_howManyRoles[MARTYR_ROLE]++;
@@ -343,7 +344,7 @@ void Game::addPlayer(str role)
 				_balance += 3;
 				break;
 			case MASON_ROLE:
-				if (_howManyRoles[MASON_ROLE] == 3)	
+				if (_howManyRoles[MASON_ROLE] == 3)
 					return(error_max());
 				_whichRoles[MASON_ROLE] = true;
 				_howManyRoles[MASON_ROLE]++;
@@ -351,7 +352,7 @@ void Game::addPlayer(str role)
 				_balance += 2;
 				break;
 			case MAYOR_ROLE:
-				if (_howManyRoles[MAYOR_ROLE] == 1)	
+				if (_howManyRoles[MAYOR_ROLE] == 1)
 					return(error_max());
 				_whichRoles[MAYOR_ROLE] = true;
 				_howManyRoles[MAYOR_ROLE]++;
@@ -359,7 +360,7 @@ void Game::addPlayer(str role)
 				_balance += 2;
 				break;
 			case OLDHAG_ROLE:
-				if (_howManyRoles[OLDHAG_ROLE] == 1)	
+				if (_howManyRoles[OLDHAG_ROLE] == 1)
 					return(error_max());
 				_whichRoles[OLDHAG_ROLE] = true;
 				_howManyRoles[OLDHAG_ROLE]++;
@@ -367,14 +368,14 @@ void Game::addPlayer(str role)
 				_balance += 1;
 				break;
 			case OLDMAN_ROLE:
-				if (_howManyRoles[OLDMAN_ROLE] == 1)	
+				if (_howManyRoles[OLDMAN_ROLE] == 1)
 					return(error_max());
 				_whichRoles[OLDMAN_ROLE] = true;
 				_howManyRoles[OLDMAN_ROLE]++;
 				newPlayer = new OldMan(this);
 				break;
 			case PI_ROLE:
-				if (_howManyRoles[PI_ROLE] == 1)	
+				if (_howManyRoles[PI_ROLE] == 1)
 					return(error_max());
 				_whichRoles[PI_ROLE] = true;
 				_howManyRoles[PI_ROLE]++;
@@ -382,7 +383,7 @@ void Game::addPlayer(str role)
 				_balance += 3;
 				break;
 			case PACIFIST_ROLE:
-				if (_howManyRoles[PACIFIST_ROLE] == 1)	
+				if (_howManyRoles[PACIFIST_ROLE] == 1)
 					return(error_max());
 				_whichRoles[PACIFIST_ROLE] = true;
 				_howManyRoles[PACIFIST_ROLE]++;
@@ -390,7 +391,7 @@ void Game::addPlayer(str role)
 				_balance -= 2;
 				break;
 			case PRIEST_ROLE:
-				if (_howManyRoles[PRIEST_ROLE] == 1)	
+				if (_howManyRoles[PRIEST_ROLE] == 1)
 					return(error_max());
 				_whichRoles[PRIEST_ROLE] = true;
 				_howManyRoles[PRIEST_ROLE]++;
@@ -398,7 +399,7 @@ void Game::addPlayer(str role)
 				_balance += 3;
 				break;
 			case PRINCE_ROLE:
-				if (_howManyRoles[PRINCE_ROLE] == 1)	
+				if (_howManyRoles[PRINCE_ROLE] == 1)
 					return(error_max());
 				_whichRoles[PRINCE_ROLE] = true;
 				_howManyRoles[PRINCE_ROLE]++;
@@ -406,7 +407,7 @@ void Game::addPlayer(str role)
 				_balance += 3;
 				break;
 			case SEER_ROLE:
-				if (_howManyRoles[SEER_ROLE] == 2)	
+				if (_howManyRoles[SEER_ROLE] == 2)
 					return(error_max());
 				_whichRoles[SEER_ROLE] = true;
 				_howManyRoles[SEER_ROLE]++;
@@ -416,7 +417,7 @@ void Game::addPlayer(str role)
 				_balance += 7;
 				break;
 			case SPELLCASTER_ROLE:
-				if (_howManyRoles[SPELLCASTER_ROLE] == 1)	
+				if (_howManyRoles[SPELLCASTER_ROLE] == 1)
 					return(error_max());
 				_whichRoles[SPELLCASTER_ROLE] = true;
 				_howManyRoles[SPELLCASTER_ROLE]++;
@@ -424,7 +425,7 @@ void Game::addPlayer(str role)
 				_balance += 1;
 				break;
 			case TOUGHGUY_ROLE:
-				if (_howManyRoles[TOUGHGUY_ROLE] == 1)	
+				if (_howManyRoles[TOUGHGUY_ROLE] == 1)
 					return(error_max());
 				_whichRoles[TOUGHGUY_ROLE] = true;
 				_howManyRoles[TOUGHGUY_ROLE]++;
@@ -432,7 +433,7 @@ void Game::addPlayer(str role)
 				_balance += 3;
 				break;
 			case TROUBLEMAKER_ROLE:
-				if (_howManyRoles[TROUBLEMAKER_ROLE] == 1)	
+				if (_howManyRoles[TROUBLEMAKER_ROLE] == 1)
 					return(error_max());
 				_whichRoles[TROUBLEMAKER_ROLE] = true;
 				_howManyRoles[TROUBLEMAKER_ROLE]++;
@@ -440,7 +441,7 @@ void Game::addPlayer(str role)
 				_balance += 2;
 				break;
 			case VILLAGER_ROLE:
-				if (_howManyRoles[VILLAGER_ROLE] == 20)	
+				if (_howManyRoles[VILLAGER_ROLE] == 20)
 					return(error_max());
 				_whichRoles[VILLAGER_ROLE] = true;
 				_howManyRoles[VILLAGER_ROLE]++;
@@ -448,7 +449,7 @@ void Game::addPlayer(str role)
 				_balance += 1;
 				break;
 			case WITCH_ROLE:
-				if (_howManyRoles[WITCH_ROLE] == 1)	
+				if (_howManyRoles[WITCH_ROLE] == 1)
 					return(error_max());
 				_whichRoles[WITCH_ROLE] = true;
 				_howManyRoles[WITCH_ROLE]++;
@@ -456,7 +457,7 @@ void Game::addPlayer(str role)
 				_balance += 4;
 				break;
 			case SORCERER_ROLE:
-				if (_howManyRoles[SORCERER_ROLE] == 1)	
+				if (_howManyRoles[SORCERER_ROLE] == 1)
 					return(error_max());
 				_whichRoles[SORCERER_ROLE] = true;
 				_howManyRoles[SORCERER_ROLE]++;
@@ -464,7 +465,7 @@ void Game::addPlayer(str role)
 				_balance -= 3;
 				break;
 			case MINION_ROLE:
-				if (_howManyRoles[MINION_ROLE] == 1)	
+				if (_howManyRoles[MINION_ROLE] == 1)
 					return(error_max());
 				_whichRoles[MINION_ROLE] = true;
 				_howManyRoles[MINION_ROLE]++;
@@ -472,7 +473,7 @@ void Game::addPlayer(str role)
 				_balance -= 6;
 				break;
 			case CURSED_ROLE:
-				if (_howManyRoles[CURSED_ROLE] == 1)	
+				if (_howManyRoles[CURSED_ROLE] == 1)
 					return(error_max());
 				_whichRoles[CURSED_ROLE] = true;
 				_howManyRoles[CURSED_ROLE]++;
@@ -480,7 +481,7 @@ void Game::addPlayer(str role)
 				_balance -= 3;
 				break;
 			case DOPPELGANGER_ROLE:
-				if (_howManyRoles[DOPPELGANGER_ROLE] == 1)	
+				if (_howManyRoles[DOPPELGANGER_ROLE] == 1)
 					return(error_max());
 				_whichRoles[DOPPELGANGER_ROLE] = true;
 				_howManyRoles[DOPPELGANGER_ROLE]++;
@@ -488,7 +489,7 @@ void Game::addPlayer(str role)
 				_balance -= 2;
 				break;
 			case CULTLEADER_ROLE:
-				if (_howManyRoles[CULTLEADER_ROLE] == 1)	
+				if (_howManyRoles[CULTLEADER_ROLE] == 1)
 					return(error_max());
 				_whichRoles[CULTLEADER_ROLE] = true;
 				_howManyRoles[CULTLEADER_ROLE]++;
@@ -496,23 +497,31 @@ void Game::addPlayer(str role)
 				_balance += 1;
 				break;
 			case HOODLUM_ROLE:
-				if (_howManyRoles[HOODLUM_ROLE] == 1)	
+				if (_howManyRoles[HOODLUM_ROLE] == 1)
 					return(error_max());
 				_whichRoles[HOODLUM_ROLE] = true;
 				_howManyRoles[HOODLUM_ROLE]++;
 				newPlayer = new Hoodlum(this);
 				break;
 			case TANNER_ROLE:
-				if (_howManyRoles[TANNER_ROLE] == 1)	
+				if (_howManyRoles[TANNER_ROLE] == 1)
 					return(error_max());
 				_whichRoles[TANNER_ROLE] = true;
 				_howManyRoles[TANNER_ROLE]++;
 				newPlayer = new Tanner(this);
 				_balance += 1;
 				break;
+			case VIGILANTE_ROLE:
+				if (_howManyRoles[VIGILANTE_ROLE] == 1)
+					return (error_max());
+				_whichRoles[VIGILANTE_ROLE] = true;
+				_howManyRoles[VIGILANTE_ROLE]++;
+				newPlayer = new Vigilante(this);
+				_balance += 4;
+				break ;
 			default:
 				break;
-		}		
+		}
 		if (newPlayer)
 		{
 			_player.push_back(newPlayer);
@@ -532,7 +541,7 @@ void Game::removePlayer(str role)
 {
 	str lowerRole = role;
 	std::transform(lowerRole.begin(), lowerRole.end(), lowerRole.begin(), ::tolower);
-	auto it = roleLookup.find(lowerRole);	
+	auto it = roleLookup.find(lowerRole);
 	if (it != roleLookup.end())
 	{
 		t_roles roleType = it->second;
@@ -742,7 +751,7 @@ void Game::firstNight()
 			{
 				_player[i]->setIndex(index);
 				break;
-			}	
+			}
 		}
 		_assignedPlayers[_assignedIndex++] = index;
 	}
@@ -2452,6 +2461,47 @@ void Game::wakeAllActiveRoles()
 		clearScreen();
 		printGameStatus();
 	}
+	if (_whichRoles[VIGILANTE_ROLE])
+	{
+		ACard	*vigilante = getPlayerByRole(VIGILANTE_ROLE);
+		if (vigilante->getLife() == ALIVE && vigilante->getGuilt() == true)
+		{
+			std::cout << "Wake up the vigilante, they will kill themselves tonight. Show them a thumbs down" << std::endl;
+			setNightlyDeaths(vigilante->getIndex());
+			std::cout << "\n\n" << "Press Enter to continue...";
+			get_input();
+		}
+		else if (vigilante->getLife() == ALIVE)
+		{
+			std::cout << "Ask the vigilante who they want to shoot tonight: (-1 shoot no one)" << std::endl;
+			str input = get_input();
+			try { std::stoi(input); }
+			catch(...)
+			{
+
+			}
+			while (!isValidPlayerNumber(input))
+			{
+				if (input == "-1")
+					break ;
+				std::cout << "ERROR: Enter valid number: ";
+				input = get_input();
+			}
+			if (input != "-1")
+			{
+				vigilante->shoot(std::stoi(input));
+				input = get_input();
+			}
+		}
+		else
+		{
+			std::cout << "The vigilante is dead, call for them to conceal this fact" << std::endl;
+			std::cout << "\n\n" << "Press Enter to continue...";
+			get_input();
+		}
+		clearScreen();
+		printGameStatus();
+	}
 }
 
 bool* Game::getRoles()
@@ -2516,7 +2566,7 @@ void Game::checkSideWins()
 		std::cout << "VILLAGERS WIN" << std::endl;
 	if (_vampWin)
 		std::cout << "VAMPIRES WIN" << std::endl;
-	
+
 	if (_whichRoles[LONEWOLF_ROLE])
 	{
 		if (getPlayerByRole(LONEWOLF_ROLE)->getLife() == ALIVE && _wolfNo == 1)

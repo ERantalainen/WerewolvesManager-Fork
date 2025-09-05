@@ -13,7 +13,7 @@ Werewolf::~Werewolf()
 void Werewolf::beAttacked(int attacker)
 {
 	ACard* attack = _game->getPlayerByIndex(attacker);
-	if (attack->getRole() == WITCH_ROLE || attack->getRole() == MAGICIAN_ROLE)
+	if (attack->getRole() == WITCH_ROLE || attack->getRole() == MAGICIAN_ROLE || attack->getRole() == VIGILANTE_ROLE)
 		_game->setNightlyDeaths(_index);
 	else if (attack->getSide() == VAMPIRE)
 		_game->setVampVictim(_index);
@@ -41,7 +41,7 @@ WolfCub::~WolfCub()
 void WolfCub::beAttacked(int attacker)
 {
 	ACard* attack = _game->getPlayerByIndex(attacker);
-	if (attack->getRole() == WITCH_ROLE || attack->getRole() == MAGICIAN_ROLE)
+	if (attack->getRole() == WITCH_ROLE || attack->getRole() == MAGICIAN_ROLE || attack->getRole() == VIGILANTE_ROLE)
 		_game->setNightlyDeaths(_index);
 	else if (attack->getSide() == VAMPIRE)
 		_game->setVampVictim(_index);
@@ -939,4 +939,47 @@ Tanner::Tanner(Game* game) : ACard(TANNER_ROLE, "Tanner", VILLAGER, false, game,
 
 Tanner::~Tanner()
 {
+}
+
+// Custom::Custom(Game *game, std::string name, int role, bool wake) : ACard(CUSTOM_ROLE, name, role, wake, game, 1)
+// {
+
+// }
+
+Vigilante::Vigilante(Game *game) : ACard(VIGILANTE_ROLE, "Vigilante", VILLAGER, true, game, 1)
+{
+	int	players = game->getPlayerNo();
+	if (players < 15)
+		_bullets = 2;
+	else
+		_bullets = 3;
+	_guilty = false;
+}
+
+void Vigilante::shoot(int index)
+{
+	ACard *target = _game->getPlayerByIndex(index);
+	target->beAttacked(_index);
+	if (target->getSide() == VILLAGER)
+		_guilty = true;
+	return ;
+}
+
+Vigilante::~Vigilante()
+{
+}
+
+bool Vigilante::getGuilt()
+{
+	return(_guilty);
+}
+
+int Vigilante::getBullets()
+{
+	return (_bullets);
+}
+
+void Vigilante::setGuilt(bool guilt)
+{
+	_guilty = guilt;
 }

@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <iomanip>
 #include <cctype>
+#include <fstream>
 
 #define NIGHT true
 #define DAY false
@@ -63,7 +64,7 @@ class Game
 			bool isValidAlivePlayer(const str& input);
 			bool isValidVoteNumber(const str& input);
 			void resetNightlyDeaths();
-			
+
 			void killVillager();
 			void killWolf();
 			void killVampire();
@@ -76,7 +77,7 @@ class Game
 			void setDrunkMode();
 			void setGhostMode();
 			void setTimeOfDay();
-			
+
 			ACard* getPlayerByIndex(int index);
 			ACard* getSeer(bool which);
 			ACard* getPlayerByRole(int role);

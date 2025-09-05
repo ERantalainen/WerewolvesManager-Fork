@@ -118,7 +118,7 @@ class Hunter : public ACard
 	public:
 			Hunter(Game* game);
 			~Hunter();
-			
+
 			void beAttacked(int attacker);
 			void beLynched();
 			void setVictim(int victim);
@@ -211,7 +211,7 @@ class OldMan : public ACard
 
 			void Dies();
 			bool getAbilityUsed(bool checkIfCopied) const;
-			
+
 };
 
 class PI : public ACard
@@ -409,4 +409,29 @@ class Tanner : public ACard
 			Tanner(Game* game);
 			~Tanner();
 
+};
+
+// class Custom : public ACard
+// {
+// 	private:
+// 		void	*abilities;
+// 		int		count;
+// 	public:
+// 		Custom(Game *game, std::string name, int role, bool wake);
+// 		Custom(Game *game);
+// 		~Custom();
+// };
+
+class Vigilante : public ACard
+{
+	private:
+		int		_bullets;
+		bool	_guilty;
+	public:
+		Vigilante(Game *game);
+		~Vigilante();
+		void	shoot(int index);
+		bool	getGuilt();
+		void	setGuilt(bool guilt);
+		int		getBullets();
 };

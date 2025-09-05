@@ -48,11 +48,26 @@ bool isValidStartNumber(const str& input)
 	}
 }
 
+// Custom	make_custom()
+// {
+// 	Custom	new_class();
+// 	str		input;
+
+// 	std::cout << "Name your class\n";
+// 	std::cin >> input;
+// 	std::ofstream custom_class(input.append(".class"));
+
+// }
+
 int main()
 {
 	clearScreen();
 	printTitle();
 	str input = "";
+	// std::cout << "Choose mode game or create" << std::endl;
+	// std::cin >> input;
+	// if (input.compare("create"))
+
 	std::cout << "Enter number of players: ";
 	input = get_input();
 	while (!isValidStartNumber(input))

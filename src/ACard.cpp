@@ -61,7 +61,7 @@ void ACard::beAttacked(int attacker)
 		_game->setNightlyDeaths(_index);
 	else if (attack->getSide() == VAMPIRE)
 		_game->setVampVictim(_index);
-	else if (attack->getRole() == HUNTER_ROLE)
+	else if (attack->getRole() == HUNTER_ROLE || attack->getRole() == VIGILANTE_ROLE)
 	{
 		if (_game->getTimeOfDay() == NIGHT)
 			_game->setNightlyDeaths(_index);
